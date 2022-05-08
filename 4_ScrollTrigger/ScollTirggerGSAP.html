@@ -31,20 +31,20 @@
 </head>
 <body>
     <div class="box">1</div>
-    <div class="box b">2</div>
-    <div class="box c">3</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
     <div class="box">4</div>
-    <div class="box e">5
-        <div class="box steak">5-1</div>
+    <div class="box">牛排
+        <div class="box steak">蓋子</div>
     </div>
     <div class="box ">6</div>
     <div class="box ">7</div>
     <div class="box ">8</div>
     <div class="box ">9</div>
-    <div class="box GSAPObj">10</div>
-    <div class="box ">11</div>
-    <div class="box a">12</div>
-    <div class="box e">13</div>
+    <div class="box">10</div>
+    <div class="box">11</div>
+    <div class="box">12</div>
+    <div class="box">13</div>
     <div class="box ">14</div>
     <div class="box ">15</div>
     <div class="box ">16</div>
@@ -55,14 +55,14 @@
 
 
     <script>
-        // 註冊滾動觸發插件
-        gsap.registerPlugin(ScrollTrigger);
+        // 註冊滾動觸發插件 新版似乎不用多加這句 但教學影片有  怕死還是加
+        // gsap.registerPlugin(ScrollTrigger);
 
         // 在動畫語法內 多增加滾動觸發事件
         gsap.to('.steak', {
             scrollTrigger:{
                 trigger: '.steak',  // 觸發對象
-                start: 'top center', // 觸發起始條件 前: 物件觸發點位置, 後: 螢幕判斷點位
+                start: 'top 60%', // 觸發起始條件 前: 物件觸發點位置, 後: 螢幕判斷點位
                 end: 'top 10%',
                 markers: true,  // DEV用 顯示觸發點位
                 scrub: true, // 重複執行 (頁面拉回來還會重複)
