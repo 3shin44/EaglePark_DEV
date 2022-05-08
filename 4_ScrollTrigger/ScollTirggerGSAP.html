@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- import GSAP from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* CSS外觀設定 */
+        .box{
+            background-color: cyan;
+            height: 100px;
+            width: 100px;
+            margin: 50px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .steak{
+            background-color: red;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box b">2</div>
+    <div class="box c">3</div>
+    <div class="box">4</div>
+    <div class="box e">5
+        <div class="box steak">5-1</div>
+    </div>
+    <div class="box ">6</div>
+    <div class="box ">7</div>
+    <div class="box ">8</div>
+    <div class="box ">9</div>
+    <div class="box GSAPObj">10</div>
+    <div class="box ">11</div>
+    <div class="box a">12</div>
+    <div class="box e">13</div>
+    <div class="box ">14</div>
+    <div class="box ">15</div>
+    <div class="box ">16</div>
+    <div class="box ">17</div>
+    <div class="box ">18</div>
+    <div class="box ">19</div>
+    <div class="box ">20</div>
+
+
+    <script>
+        // 註冊滾動觸發插件
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 在動畫語法內 多增加滾動觸發事件
+        gsap.to('.steak', {
+            scrollTrigger:{
+                trigger: '.steak',  // 觸發對象
+                start: 'top center', // 觸發起始條件 前: 物件觸發點位置, 後: 螢幕判斷點位
+                end: 'top 10%',
+                markers: true,  // DEV用 顯示觸發點位
+                scrub: true, // 重複執行 (頁面拉回來還會重複)
+                pin: true // 滾動時將物件定住在螢幕中 (詳見示範案例)
+            },
+            duration: 5,
+            y: -500,
+            opacity:0,
+            ease: 'power1'
+        })
+    </script>
+
+
+</body>
+
+</html>
