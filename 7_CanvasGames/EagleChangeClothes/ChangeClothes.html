@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            border: 1px solid black;
+            margin: 50px 0 0 50px;
+        }
+        .options{
+            width: 500px;
+            margin-left: 50px;
+            display: flex;
+            justify-content: space-evenly;
+
+        }
+    </style>
+</head>
+<body>
+    <canvas id='canvas' width="500" height="500"></canvas>
+    <div class="options">
+        <button id="dress1">DRESS 1 <img src="./dress1.svg" alt=""></button>
+        <button id="dress2">DRESS 2 <img src="./dress2.svg" alt=""></button>
+        <button id="dress3">DRESS 3 <img src="./dress3.svg" alt=""></button>
+        <button id="clear">CLEAR<br> <img src="./clear-all-svgrepo-com.svg" alt="" width="30"></button>
+    </div>
+
+
+    <script src="./Clothes.js"></script>
+</body>
+</html>

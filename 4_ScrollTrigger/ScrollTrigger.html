@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS外觀設定 */
+        .box{
+            background-color: cyan;
+            height: 100px;
+            width: 100px;
+            margin: 50px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 動畫設定 設定動畫標籤 觸發時為active */
+        .Ani_SlideIn{
+            position: relative;
+            transform: translateY(0);
+            opacity: 1;
+            transition: 2s all ease;
+        }
+        .Ani_SlideIn.active{
+            transform: translateY(-350px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box ">6</div>
+    <div class="box ">7</div>
+    <div class="box ">8</div>
+    <div class="box ">9</div>
+    <div class="box Ani_SlideIn">10</div>
+    <div class="box Ani_SlideIn">11</div>
+    <div class="box Ani_SlideIn">12</div>
+    <div class="box Ani_SlideIn">13</div>
+    <div class="box Ani_SlideIn">14</div>
+    <div class="box Ani_SlideIn">15</div>
+    <div class="box Ani_SlideIn">16</div>
+    <div class="box Ani_SlideIn">17</div>
+    <div class="box Ani_SlideIn">18</div>
+    <div class="box Ani_SlideIn">19</div>
+    <div class="box Ani_SlideIn">20</div>
+</body>
+
+<script>
+    window.addEventListener('load', function(){
+    
+        // 滾動時觸發事件
+        window.addEventListener("scroll", SlideIn);
+
+        // 滑入動畫
+        function SlideIn(){
+            // 抓取螢幕內部高度
+            let VW_Distance = window.innerHeight;
+
+            // 物件距離螢幕 多少百分比觸發, 此案例為0.8 (80%)
+            let RWD_Percentage = 0.6;
+
+            // 有動畫標籤的物件先抓到陣列裡
+            let Animation_Items = new Array();
+            let Animation = document.querySelectorAll(".Ani_SlideIn");
+
+            // 所有物件加入事件觸發判斷條件
+            for (let i = 0; i < Animation.length; i++){
+
+                // 每個物件偵測距離螢幕狀態
+                Animation_Items[i]=Animation[i].getBoundingClientRect();
+
+                // Animation_Items[i].y 抓取Y軸距離
+                if (Animation_Items[i].y < VW_Distance*RWD_Percentage) {
+                    // 為觸發的物件加入active標籤 觸發CSS動畫
+                    Animation[i].classList.add("active");
+                } else {
+
+                    // 為觸發的物件移除active標籤 觸發CSS動畫
+                    Animation[i].classList.remove("active");
+                }
+            }
+        }
+
+});
+</script>
+
+
+
+</html>
