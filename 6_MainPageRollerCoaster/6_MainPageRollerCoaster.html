@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/MotionPathPlugin.min.js"></script>
+
+</head>
+<style>
+    .box{
+        width: 80%;
+        margin: auto;
+        border: 1px solid black;
+        position: relative;
+    }
+    img{
+        display: block;
+        width: 100%;
+    }
+    #RollerPath{
+        position: absolute;
+        top: 0;
+    }
+    #RollerCoaster{
+        width: 50px;
+        position: absolute;
+        top: 0;
+    }
+</style>
+<body>
+    <div class="box">
+        <img id='bcgPic' src="./MainPageRollerCoaster.png" alt="">
+        <svg id="RollerPath" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 607.2 436.8"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:3px;}</style></defs><path class="cls-1" d="M38.11,0c1,45.18-27.69,253.91,236,290.87C418.14,311,516.28,300,607.2,276.19"/></svg>
+        <img id='RollerCoaster' src="./Grocery_Cart.png" alt="">
+    </div>
+
+    <script>
+        // 註冊插件
+        gsap.registerPlugin(MotionPathPlugin);
+
+        gsap.to('#RollerCoaster',{
+            duration: 5,
+            repeat:-1,
+            motionPath:{  // 這個吃SVG路徑 現在麻煩在不知如何定位
+                path: 'M38.11,0c1,45.18-27.69,253.91,236,290.87C418.14,311,516.28,300,607.2,276.19',
+                autoRotate: true
+            }
+            
+        });
+    </script>
+</body>
+</html>
