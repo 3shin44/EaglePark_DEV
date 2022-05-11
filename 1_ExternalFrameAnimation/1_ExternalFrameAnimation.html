@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .Tutorial{
+            
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+            animation: CSS_clipPath alternate 3s infinite;
+        }
+
+        @keyframes CSS_clipPath {
+            0%{clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);}
+            50%{clip-path: polygon(50% 0%, 0% 100%, 100% 100%);}
+            100%{clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}
+        }
+    </style>
+</head>
+<body>
+    <h2>Tutorial</h2>
+    <img class="Tutorial" src="https://picsum.photos/300/200/?random=10">
+
+
+    <h2>Theme Park Demo</h2>
+    <div class="container">
+        <div class="themePark">
+            <div class="themeParkPic">
+                <img src="https://picsum.photos/300/200/?random=15">
+            </div>
+            <div class="themeParkName">
+                New York
+            </div>
+        </div>
+        <div class="themePark">
+            <div class="themeParkPic">
+                <img src="https://picsum.photos/300/200/?random=16">
+            </div>
+            <div class="themeParkName">
+                America Indian
+            </div>
+        </div>
+        <div class="themePark">
+            <div class="themeParkPic">
+                <img src="https://picsum.photos/300/200/?random=17">
+            </div>
+            <div class="themeParkName">
+                Western Wild
+            </div>
+        </div>
+    </div>
+</body>
+</html>
