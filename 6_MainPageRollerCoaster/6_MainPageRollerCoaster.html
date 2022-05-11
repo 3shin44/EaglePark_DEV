@@ -39,7 +39,12 @@
 
     <script>
         // 註冊插件
+        // gsap.registerPlugin(MotionPathPlugin);
+
         gsap.registerPlugin(MotionPathPlugin);
+
+        let myPath = document.querySelector("#RollerPath");  
+
 
         gsap.to('#RollerCoaster',{
             duration: 5,
