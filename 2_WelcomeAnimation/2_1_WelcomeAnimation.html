@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .ferrisWheel{
+            position: relative;
+        }
+        .tower, .wheel{
+            width: 500px;
+            height: 500px;
+        }
+        .wheel{
+            position: absolute;
+            left: 0;
+            top: -10px;
+            animation: FerrisWheel;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes FerrisWheel {
+            100% {transform: rotate(360deg);}
+        }
+    </style>
+    <!-- 純背景CSS動畫  基本原理是底圖與動態部分分離 ,動畫圖片分離, 接著透過CSS定位到特定位置 再套用CSS動畫即可 -->
+
+</head>
+<body>
+    <div class="ferrisWheel">
+        <img class="tower" src="./Frame 1.png" alt="">
+        <img class="wheel" src="./Frame 3.png" alt="">
+    </div>
+
+</body>
+</html>
