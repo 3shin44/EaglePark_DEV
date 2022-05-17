@@ -6,9 +6,6 @@ function DoFirst(){
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
 
-
-    
-
     class Eagle{
         constructor(x, y){
             this.x = x;
@@ -133,37 +130,84 @@ function DoFirst(){
 
     }
 
+    class BurgerController{
+        BurgerList = [];
+        
+        constructor(canvas){
+            this.canvas = canvas;
+        }
+    
+        FallBurger(x, y){
+            this.BurgerList.push(new Burger(x, y));
+        }
+    
+    
+    
+        draw(context){         
+            this.BurgerList.forEach( (burger) => {
+                if(this.BurgerOffScreen(burger)){
+                    const index = this.BurgerList.indexOf(burger);  // 若觸及邊界觸發處理程序
+                    this.BurgerList.splice(index, 1);              // 刪除子彈陣列中的子彈
+                    console.log('slice burger');
+                }
+    
+                burger.draw(context);
+            });
+        }
+    
+    
+        collidWith(sprite){  // some用於檢查陣列中任一元素符合條件
+            return this.BurgerList.some(bullet=>{
+                if(bullet.collidWith(sprite)){
+                    this.BurgerList.splice(this.BurgerList.indexOf(bullet), 1);
+                    return true;
+                }
+                return false;
+            });
+        }
+    
+    
+    
+        BurgerOffScreen(burger){
+            return burger.y <= burger.height;  // 判斷是否觸及邊界 
+        }
+    }
+
+
+
     const eagleplayer = new Eagle(canvas.width*0.45, canvas.height*0.8);  //老鷹產生的起始位置 位於CANVAS下方與中央位置
 
 
-    const tBurger = new Burger(300,0);
+    // const tBurger = new Burger(300,0);
 
-    const testburgers = [
-        new Burger(50, -50),
-        new Burger(150,-130),
-        new Burger(200,-250),
-    ];
+    // const testburgers = [
+    //     new Burger(50, -50),
+    //     new Burger(150,-130),
+    //     new Burger(200,-250),
+    // ];
 
+    const HBcontrol = new BurgerController( new Burger(50, -50), new Burger(150,-130), new Burger(200,-250))
+    HBcontrol.FallBurger(50, -50);
 
     function gameLoop(){
         context.fillStyle = 'white';
         context.fillRect(0, 0, canvas.width, canvas.height);
         eagleplayer.draw(context);
-        tBurger.draw(context);
-        testburgers.forEach( (e)=> {
-            e.draw(context);
+        HBcontrol.draw(context);
+        // testburgers.forEach( (e)=> {
+        //     e.draw(context);
 
-            if (e.collidWith(eagleplayer)){
-                context.font='50px sans-serif';
-                context.fillText('collide', 200, 200, 100);
-            }
+        //     if (e.collidWith(eagleplayer)){
+        //         context.font='50px sans-serif';
+        //         context.fillText('collide', 200, 200, 100);
+        //     }
             
-        });
+        // });
 
-        if (tBurger.collidWith(eagleplayer)){
-            context.font='50px sans-serif';
-            context.fillText('collide', 200, 200, 100);
-        }
+        // if (tBurger.collidWith(eagleplayer)){
+        //     context.font='50px sans-serif';
+        //     context.fillText('collide', 200, 200, 100);
+        // }
 
         context.fillStyle='blue'; //這個藍色方塊是用來檢查程式碼有沒有出包  如果連這色塊都跑不出來 代表程式碼問題大了
         context.fillRect(250,250, 50,50);
